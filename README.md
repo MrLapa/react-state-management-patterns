@@ -1,3 +1,7 @@
+# React State Management Patterns
+
+A React playground to compare different state-management solutions (Context, Zustand, Redux) by solving the same problem with each approach.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
