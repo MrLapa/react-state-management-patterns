@@ -1,5 +1,6 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from "next/image"
+
+import styles from "./page.module.css"
 
 export default function Home() {
   return (
@@ -60,7 +61,13 @@ export default function Home() {
             Documentation
           </a>
         </div>
+        <div className={styles.projectDescription}>
+          <h1>React State Management Patterns</h1>
+          <p>
+            Compare Context, Zustand, and Redux by solving the same problem.
+          </p>
+        </div>
       </main>
     </div>
-  );
+  )
 }
