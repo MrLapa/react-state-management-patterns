@@ -24,18 +24,22 @@ Each solution branch solves the same problem:
 
 ## 📁 Folder Structure
 
-react-state-management-patterns/
-├── src/
-│ ├── app/
-│ │ ├── page.tsx
-│ │ ├── layout.tsx
-│ │ └── globals.css
-│ ├── components/
-│ │ ├── ThemeToggle.tsx
-│ │ └── ThemeConsumer.tsx
-├── PLAN-THEME.md
-├── package.json
-└── README.md
+    react-state-management-patterns/
+    ├── src/
+    │   ├── app/
+    │   │   ├── page.tsx
+    │   │   ├── layout.tsx
+    │   │   └── globals.css
+    │   ├── components/
+    │   │   ├── ThemeToggle.tsx
+    │   │   └── ThemeConsumer.tsx
+    │   ├── context/
+    │   │   ├── ThemeContext.tsx
+    │   │   ├── ThemeProvider.tsx
+    │   │   └── README.md
+    ├── PLAN.md
+    ├── package.json
+    └── README.md
 
 > **Note:**
 > The folder structure remains the same across all branches. Each solution branch updates only the implementation details and its own plan file.
@@ -69,7 +73,8 @@ UI Components:
 ### 1. React Context API
 
 - Create a `ThemeContext`
-- Provide it in `layout.tsx`
+- Create a `ThemeProvider` component to encapsulate context logic and provide the value
+- Use `ThemeProvider` in `layout.tsx` to wrap the app
 - Build custom hooks:
   - `useTheme()`
 - Use reducer-based state or simple `useState`
@@ -125,6 +130,7 @@ UI Components:
 - All three solutions must behave exactly the same\
 - Theme toggles instantly\
 - No prop drilling
+- Only one place (PageWrapper) sets global HTML/body structure and theme class
 
 ### Developer Experience Docs
 

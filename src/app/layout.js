@@ -2,10 +2,10 @@
 
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
-import React, { useState } from "react"
+import React from "react"
 
-import ThemeToggle from "../components/ThemeToggle"
-import ThemeConsumer from "../components/ThemeConsumer"
+import ThemeProvider from "../context/ThemeProvider"
+import PageWrapper from "../components/PageWrapper"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,18 +18,11 @@ const geistMono = Geist_Mono({
 })
 
 export default function RootLayout({ children }) {
-  const [theme, setTheme] = useState("light")
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light")
-
   return (
-    <html lang="en" className={theme}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="container">
-          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          <ThemeConsumer theme={theme} />
-          {children}
-        </div>
-      </body>
-    </html>
+    <ThemeProvider>
+      <PageWrapper>
+        {children}
+      </PageWrapper>
+    </ThemeProvider>
   )
 }

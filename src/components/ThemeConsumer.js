@@ -1,6 +1,9 @@
 import React from "react"
 
-const ThemeConsumer = ({ theme }) => {
+import { useTheme } from "../context/ThemeContext"
+
+const ThemeConsumer = () => {
+  const { theme } = useTheme()
   return (
     <div>
       <strong>Current Theme:</strong> {theme}
