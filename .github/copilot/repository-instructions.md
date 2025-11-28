@@ -21,7 +21,7 @@ For all components except pages and layouts, use arrow functions and export them
 ```js
 const MyComponent = (props) => {
   // ...component code...
-};
+}
 
-export default MyComponent;
+export default MyComponent
 ```
