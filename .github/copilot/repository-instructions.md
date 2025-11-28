@@ -13,3 +13,15 @@ This ensures compatibility with Next.js requirements for Client Components.
 ```
 
 Refer to the [Next.js documentation](https://nextjs.org/docs/app/api-reference/directives/use-client) for more details.
+
+## Component Export Style Rule
+
+For all components except pages and layouts, use arrow functions and export them as default below the function definition:
+
+```js
+const MyComponent = (props) => {
+  // ...component code...
+};
+
+export default MyComponent;
+```
