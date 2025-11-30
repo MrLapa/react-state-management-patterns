@@ -43,19 +43,13 @@ Each approach solves the same problem:
     │   ├── context-solution/
     │   │   ├── ThemeContext.tsx
     │   │   └── README.md
-    │   │
-    │   ├── zustand-solution/
-    │   │   ├── themeStore.ts
-    │   │   └── README.md
-    │   │
-    │   ├── redux-solution/
-    │   │   ├── store.ts
-    │   │   ├── themeSlice.ts
-    │   │   └── README.md
     │
     ├── PLAN.md
     ├── package.json
     └── README.md
+
+  **Note:**
+  Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch (e.g., `feature/context-solution`, `feature/zustand-solution`, `feature/redux-solution`). The folder structure remains the same across branches. No solution-specific folders are created; instead, each branch updates or replaces files as needed to showcase the approach in isolation.
 
 ---
 
@@ -126,6 +120,8 @@ UI Components:
 - Create context
 - Provide in root layout
 - Replace local state with context state
+
+**Repeat similar steps for each solution branch (Zustand, Redux Toolkit), updating or replacing files as needed.**
 
 ### Step 3 --- Branch: `zustand-solution`
 
