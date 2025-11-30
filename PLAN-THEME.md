@@ -35,27 +35,21 @@ Each approach solves the same problem:
     │   │   ├── page.tsx
     │   │   ├── layout.tsx
     │   │   └── globals.css
-    │   │
     │   ├── components/
     │   │   ├── ThemeToggle.tsx
     │   │   └── ThemeConsumer.tsx
-    │   │
-    │   ├── context-solution/
+    │   ├── context/
     │   │   ├── ThemeContext.tsx
     │   │   └── README.md
-    │   │
-    │   ├── zustand-solution/
-    │   │   ├── themeStore.ts
-    │   │   └── README.md
-    │   │
-    │   ├── redux-solution/
-    │   │   ├── store.ts
-    │   │   ├── themeSlice.ts
-    │   │   └── README.md
-    │
     ├── PLAN.md
     ├── package.json
     └── README.md
+
+  > **Note:**
+  > Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch. The folder structure remains the same across all branches. No solution-specific folders are created; only the implementation details within files are updated per branch.
+
+  **Note:**
+  Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch (e.g., `feature/context-solution`, `feature/zustand-solution`, `feature/redux-solution`). The folder structure remains the same across branches. No solution-specific folders are created; instead, each branch updates or replaces files as needed to showcase the approach in isolation.
 
 ---
 
@@ -123,21 +117,18 @@ UI Components:
 
 ### Step 2 --- Branch: `context-solution`
 
-- Create context
-- Provide in root layout
-- Replace local state with context state
+- Implement Context API logic in the shared structure (e.g., `src/context/`, `src/components/`)
+- Do not create a `context-solution/` folder
 
 ### Step 3 --- Branch: `zustand-solution`
 
-- Create Zustand store
-- Remove context logic
-- Use Zustand hooks instead
+- Implement Zustand logic in the shared structure
+- Do not create a `zustand-solution/` folder
 
 ### Step 4 --- Branch: `redux-solution`
 
-- Add Redux Toolkit
-- Create slice + store
-- Wrap provider in layout
+- Implement Redux Toolkit logic in the shared structure
+- Do not create a `redux-solution/` folder
 
 ---
 
