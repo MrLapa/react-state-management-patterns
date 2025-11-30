@@ -1,3 +1,50 @@
+## PageWrapper Pattern for Theme Management
+
+To keep theme logic modular and maintainable, this project uses a `PageWrapper` component:
+
+- `PageWrapper` is responsible for rendering the global `<html>` and `<body>` structure.
+- It applies the current theme as a class to the `<html>` element using the value from the context.
+- It imports and applies font variables for consistent styling.
+- It renders shared UI components like `ThemeToggle` and `ThemeConsumer`.
+- All page content (`children`) is rendered inside `PageWrapper`.
+
+### Example Usage
+
+In `src/app/layout.js`:
+
+```jsx
+<ThemeProvider>
+  <PageWrapper>{children}</PageWrapper>
+</ThemeProvider>
+```
+
+In `src/components/PageWrapper.js`:
+
+```jsx
+const PageWrapper = ({ children }) => {
+  const { theme } = useTheme()
+  return (
+    <html lang="en" className={theme}>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div className="container">
+          <ThemeToggle />
+          <ThemeConsumer />
+          {children}
+        </div>
+      </body>
+    </html>
+  )
+}
+```
+
+### Why This Pattern?
+
+- Keeps global theme logic in one place.
+- Ensures the theme class is always applied to `<html>`.
+- Makes it easy to swap state management solutions in different branches.
+
+> **Note:** The folder structure remains consistent across branches. The PageWrapper pattern is used for all solutions to ensure a fair comparison.
+
 # PLAN.md
 
 # React State Management Patterns --- Project Plan
@@ -68,89 +115,57 @@ UI Components:
 
 ---
 
-## 📚 Solutions You Will Implement
+## 📚 Solution Implemented in This Branch
 
-### 1. React Context API
+### React Context API
 
 - Create a `ThemeContext`
 - Create a `ThemeProvider` component to encapsulate context logic and provide the value
 - Use `ThemeProvider` in `layout.tsx` to wrap the app
-- Build custom hooks:
-  - `useTheme()`
+- Build custom hook: `useTheme()`
 - Use reducer-based state or simple `useState`
 
-**Pros:** simple, zero dependencies\
+**Pros:** simple, zero dependencies
 **Cons:** re-renders propagate through the tree
-
----
-
-### 2. Zustand
-
-- Create a store with `create()`
-- Expose state + actions
-- Update components using selectors
-
-**Pros:** minimal re-renders, simple API\
-**Cons:** external lib
-
----
-
-### 3. Redux Toolkit
-
-- Create a slice: `themeSlice.ts`
-- Add store: `store.ts`
-- Wrap provider in `layout.tsx`
-
-**Pros:** scalable, predictable, devtools\
-**Cons:** more boilerplate
-
----
 
 ## 🪜 Implementation Steps
 
-### Step 1 — Base UI (main branch)
+### Step 1 — Setup the Base UI
 
 - Implement basic layout with container
 - Add `<ThemeToggle />`
 - Add `<ThemeConsumer />`
 - Default theme = "light"
 
-### Step 2 — Solution Branches
+### Step 2 — Context API Solution
 
-- Create a new branch from `main` for each solution (Context API, Zustand, Redux Toolkit)
-- Update [`PLAN-THEME.md`](PLAN-THEME.md) in the solution branch to describe only the relevant state management approach
-- Implement the solution in the shared folder structure
+- Create a `ThemeContext`
+- Create a `ThemeProvider` component to encapsulate context logic and provide the value
+- Use `ThemeProvider` in `layout.tsx` to wrap the app
+- Build custom hook: `useTheme()`
+- Use reducer-based state or simple `useState`
+- Use `PageWrapper` to apply theme and render UI components
 
 ---
 
 ## 🧪 Acceptance Criteria
 
-### General
-
-- All three solutions must behave exactly the same\
-- Theme toggles instantly\
+- Theme toggles instantly
 - No prop drilling
 - Only one place (PageWrapper) sets global HTML/body structure and theme class
 
 ### Developer Experience Docs
 
-Each solution folder must include a `README.md` explaining: - How the
-solution works\
-
-- Pros & cons\
-- When to use it
+- `src/context/README.md` explains how the solution works, pros & cons, and when to use it
 
 ### Manual Testing
 
-- Load the app\
-- Toggle theme\
+- Load the app
+- Toggle theme
 - Confirm all components sync
 
 ---
 
 ## 🔚 Final Deliverables
 
-- `main` branch: base UI only
-- `feature/theme-context-solution`: Context API implementation and plan
-- `feature/theme-zustand-solution`: Zustand implementation and plan
-- `feature/theme-redux-solution`: Redux Toolkit implementation and plan
+- This branch with Context API solution and documentation
