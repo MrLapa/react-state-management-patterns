@@ -1,6 +1,12 @@
+"use client"
+
 import React from "react"
 
-const ThemeToggle = ({ theme, toggleTheme }) => {
+import useThemeStore from "../store/themeStore"
+
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useThemeStore()
+
   return (
     <button onClick={toggleTheme}>
       Switch to {theme === "light" ? "dark" : "light"} mode
