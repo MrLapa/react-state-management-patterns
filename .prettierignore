@@ -1,0 +1,23 @@
+# .prettierignore
+node_modules
+build
+dist
+.next
+out
+coverage
+*.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.env
+.env.local
+.env.*.local
+public
+.DS_Store
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.ico
+*.webp
+*.gif

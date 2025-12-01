@@ -1,6 +1,5 @@
 # PLAN.md
 
-
 # React State Management Patterns --- Project Plan
 
 This repository explores different state-management strategies in React by solving **the same problem** (a global theme switcher) using multiple approaches:
@@ -13,7 +12,6 @@ The main branch contains only the base UI and project setup. Each state manageme
 
 ---
 
-
 ## 🎯 Purpose
 
 Demonstrate how to avoid **prop drilling** by implementing a reusable "Global UI Theme Switcher" in multiple state-management styles.
@@ -24,33 +22,31 @@ Each solution branch solves the same problem:
 
 ---
 
-
 ## 📁 Folder Structure
 
-  react-state-management-patterns/
-  ├── src/
-  │   ├── app/
-  │   │   ├── page.tsx
-  │   │   ├── layout.tsx
-  │   │   └── globals.css
-  │   ├── components/
-  │   │   ├── ThemeToggle.tsx
-  │   │   └── ThemeConsumer.tsx
-  ├── PLAN-THEME.md
-  ├── package.json
-  └── README.md
+react-state-management-patterns/
+├── src/
+│ ├── app/
+│ │ ├── page.tsx
+│ │ ├── layout.tsx
+│ │ └── globals.css
+│ ├── components/
+│ │ ├── ThemeToggle.tsx
+│ │ └── ThemeConsumer.tsx
+├── PLAN-THEME.md
+├── package.json
+└── README.md
 
 > **Note:**
 > The folder structure remains the same across all branches. Each solution branch updates only the implementation details and its own plan file.
 
-  > **Note:**
-  > Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch. The folder structure remains the same across all branches. No solution-specific folders are created; only the implementation details within files are updated per branch.
+> **Note:**
+> Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch. The folder structure remains the same across all branches. No solution-specific folders are created; only the implementation details within files are updated per branch.
 
-  **Note:**
-  Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch (e.g., `feature/context-solution`, `feature/zustand-solution`, `feature/redux-solution`). The folder structure remains the same across branches. No solution-specific folders are created; instead, each branch updates or replaces files as needed to showcase the approach in isolation.
+**Note:**
+Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch (e.g., `feature/context-solution`, `feature/zustand-solution`, `feature/redux-solution`). The folder structure remains the same across branches. No solution-specific folders are created; instead, each branch updates or replaces files as needed to showcase the approach in isolation.
 
 ---
-
 
 ## 🧩 The Problem to Solve
 
@@ -105,7 +101,6 @@ UI Components:
 
 ---
 
-
 ## 🪜 Implementation Steps
 
 ### Step 1 — Base UI (main branch)
@@ -146,7 +141,6 @@ solution works\
 - Confirm all components sync
 
 ---
-
 
 ## 🔚 Final Deliverables
 
