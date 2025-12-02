@@ -23,7 +23,8 @@ react-state-management-patterns/
 │ │ └── ThemeConsumer.js
 │ ├── store/
 │ │ ├── themeSlice.js
-│ │ └── index.js
+│ │ ├── index.js
+│ │ └── README.md
 ├── PLAN-THEME.md
 ├── package.json
 └── README.md
