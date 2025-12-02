@@ -1,24 +1,12 @@
-# PLAN.md
+# React State Management Patterns — Redux Toolkit Solution
 
-# React State Management Patterns --- Project Plan
-
-This repository explores different state-management strategies in React by solving **the same problem** (a global theme switcher) using multiple approaches:
-
-- Context API
-- Zustand
-- Redux Toolkit
-
-The main branch contains only the base UI and project setup. Each state management solution is implemented in its own dedicated branch, with a focused plan and implementation.
+This branch demonstrates how to avoid **prop drilling** by implementing a reusable "Global UI Theme Switcher" using Redux Toolkit.
 
 ---
 
 ## 🎯 Purpose
 
-Demonstrate how to avoid **prop drilling** by implementing a reusable "Global UI Theme Switcher" in multiple state-management styles.
-
-Each solution branch solves the same problem:
-
-> **A global theme (light/dark) that can be toggled from anywhere and accessed across multiple components.**
+> Implement a global theme (light/dark) that can be toggled from anywhere and accessed across multiple components, using Redux Toolkit for state management.
 
 ---
 
@@ -31,20 +19,17 @@ react-state-management-patterns/
 │ │ ├── layout.tsx
 │ │ └── globals.css
 │ ├── components/
-│ │ ├── ThemeToggle.tsx
-│ │ └── ThemeConsumer.tsx
+│ │ ├── ThemeToggle.js
+│ │ └── ThemeConsumer.js
+│ ├── store/
+│ │ ├── themeSlice.js
+│ │ └── index.js
 ├── PLAN-THEME.md
 ├── package.json
 └── README.md
 
 > **Note:**
-> The folder structure remains the same across all branches. Each solution branch updates only the implementation details and its own plan file.
-
-> **Note:**
-> Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch. The folder structure remains the same across all branches. No solution-specific folders are created; only the implementation details within files are updated per branch.
-
-**Note:**
-Each state management solution (Context API, Zustand, Redux Toolkit) is implemented in its own branch (e.g., `feature/context-solution`, `feature/zustand-solution`, `feature/redux-solution`). The folder structure remains the same across branches. No solution-specific folders are created; instead, each branch updates or replaces files as needed to showcase the approach in isolation.
+> This branch implements the Redux Toolkit solution. No solution-specific folders are created; only the implementation details within files are updated.
 
 ---
 
@@ -64,87 +49,70 @@ UI Components:
 
 ---
 
-## 📚 Solutions You Will Implement
+## 📚 Solution Implemented in This Branch
 
-### 1. React Context API
+### Redux Toolkit Theme Management
 
-- Create a `ThemeContext`
-- Provide it in `layout.tsx`
-- Build custom hooks:
-  - `useTheme()`
-- Use reducer-based state or simple `useState`
+- Theme state and toggling are managed by Redux Toolkit (`src/store/themeSlice.js`).
+- The Redux store is configured in `src/store/store.js`.
+- The app is wrapped in a single `<Provider store={store}>` in `src/app/layout.js`.
+- Use `useSelector` and `useDispatch` from `react-redux` in components to access and update theme state.
+- Set the theme class on `<html>`: `<html lang="en" className={theme}>`.
+- CSS uses `.light` and `.dark` classes on `<html>` for styling (same as other solutions).
+- No need for multiple providers; Redux manages all global state in a single store.
 
-**Pros:** simple, zero dependencies\
-**Cons:** re-renders propagate through the tree
-
----
-
-### 2. Zustand
-
-- Create a store with `create()`
-- Expose state + actions
-- Update components using selectors
-
-**Pros:** minimal re-renders, simple API\
-**Cons:** external lib
-
----
-
-### 3. Redux Toolkit
-
-- Create a slice: `themeSlice.ts`
-- Add store: `store.ts`
-- Wrap provider in `layout.tsx`
-
-**Pros:** scalable, predictable, devtools\
-**Cons:** more boilerplate
-
----
+**Pros:** scalable, predictable, devtools support, easy to add more features/slices.
+**Cons:** more boilerplate, external dependencies.
 
 ## 🪜 Implementation Steps
 
-### Step 1 — Base UI (main branch)
+### Step 1 — Create Redux Slice
 
-- Implement basic layout with container
-- Add `<ThemeToggle />`
-- Add `<ThemeConsumer />`
-- Default theme = "light"
+- Create `src/store/themeSlice.js` with `theme` and `toggleTheme` reducer.
 
-### Step 2 — Solution Branches
+### Step 2 — Configure Redux Store
 
-- Create a new branch from `main` for each solution (Context API, Zustand, Redux Toolkit)
-- Update [`PLAN-THEME.md`](PLAN-THEME.md) in the solution branch to describe only the relevant state management approach
-- Implement the solution in the shared folder structure
+- Create `src/store/index.js` and add the theme slice reducer.
+
+### Step 3 — Integrate Provider
+
+- Wrap the app with `<Provider store={store}>` in `src/app/layout.js`.
+- Use a layout component to apply the theme class to `<html>` and render shared UI.
+
+### Step 4 — Update UI Components
+
+- Refactor `ThemeToggle` and `ThemeConsumer` to use Redux hooks (`useSelector`, `useDispatch`).
+
+### Step 5 — Refactor CSS
+
+- Use `.light` and `.dark` classes on `<html>` in `src/app/globals.css` for styling (same as other solutions).
+
+### Step 6 — Documentation
+
+- Document the solution in `src/store/README.md`.
 
 ---
 
 ## 🧪 Acceptance Criteria
 
-### General
-
-- All three solutions must behave exactly the same\
-- Theme toggles instantly\
+- Theme toggles instantly
 - No prop drilling
+- Theme is applied globally via `<html className={theme}>`
+- Only one Redux `<Provider>` at the root
+- Easy to add more slices for other features
 
 ### Developer Experience Docs
 
-Each solution folder must include a `README.md` explaining: - How the
-solution works\
-
-- Pros & cons\
-- When to use it
+- `src/store/README.md` explains how the solution works, pros & cons, and when to use it
 
 ### Manual Testing
 
-- Load the app\
-- Toggle theme\
+- Load the app
+- Toggle theme
 - Confirm all components sync
 
 ---
 
 ## 🔚 Final Deliverables
 
-- `main` branch: base UI only
-- `feature/theme-context-solution`: Context API implementation and plan
-- `feature/theme-zustand-solution`: Zustand implementation and plan
-- `feature/theme-redux-solution`: Redux Toolkit implementation and plan
+- This branch with Redux Toolkit solution and documentation

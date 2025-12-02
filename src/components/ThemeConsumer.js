@@ -1,11 +1,9 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
-const ThemeConsumer = ({ theme }) => {
-  return (
-    <div>
-      <strong>Current Theme:</strong> {theme}
-    </div>
-  )
+const ThemeConsumer = () => {
+  const theme = useSelector((state) => state.theme.theme)
+  return <div>Current theme: {theme}</div>
 }
 
 export default ThemeConsumer
