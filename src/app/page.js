@@ -1,5 +1,8 @@
 import Image from "next/image"
 
+import ThemeDisplay from "../components/ThemeDisplay"
+import ThemeToggleButton from "../components/ThemeToggleButton"
+
 import styles from "./page.module.css"
 
 export default function Home() {
@@ -54,7 +57,7 @@ export default function Home() {
           </a>
           <a
             className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -66,6 +69,12 @@ export default function Home() {
           <p>
             Compare Context, Zustand, and Redux by solving the same problem.
           </p>
+        </div>
+        {/* Context demo components */}
+        <div style={{ marginTop: "2rem" }}>
+          <h2>React Context Demo</h2>
+          <ThemeDisplay />
+          <ThemeToggleButton />
         </div>
       </main>
     </div>
