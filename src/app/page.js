@@ -1,7 +1,6 @@
 import Image from "next/image"
 
-import ThemeDisplay from "../components/ThemeDisplay"
-import ThemeToggleButton from "../components/ThemeToggleButton"
+import NoContextComponent from "../components/NoContextComponent"
 
 import styles from "./page.module.css"
 
@@ -70,12 +69,8 @@ export default function Home() {
             Compare Context, Zustand, and Redux by solving the same problem.
           </p>
         </div>
-        {/* Context demo components */}
-        <div style={{ marginTop: "2rem" }}>
-          <h2>React Context Demo</h2>
-          <ThemeDisplay />
-          <ThemeToggleButton />
-        </div>
+        {/* EXPERIMENT: {children} pass-through — no useTheme, not an inline child of a subscriber */}
+        <NoContextComponent label="page.js" />
       </main>
     </div>
   )

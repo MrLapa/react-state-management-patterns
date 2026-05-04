@@ -5,6 +5,7 @@ import { useTheme } from "../context/ThemeContext"
 
 import ThemeToggle from "./ThemeToggle"
 import ThemeConsumer from "./ThemeConsumer"
+import NoContextComponent from "./NoContextComponent"
 import "../app/globals.css"
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] })
@@ -23,6 +24,8 @@ const PageWrapper = ({ children }) => {
         <div className="container">
           <ThemeToggle />
           <ThemeConsumer />
+          {/* EXPERIMENT: inline child — no useTheme, but parent (PageWrapper) is a subscriber */}
+          <NoContextComponent label="PageWrapper" />
           {children}
         </div>
       </body>
