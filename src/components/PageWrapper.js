@@ -2,9 +2,12 @@ import React from "react"
 import { Geist, Geist_Mono } from "next/font/google"
 
 import { useTheme } from "../context/ThemeContext"
+import { useLocale } from "../context/LocaleContext"
 
 import ThemeToggle from "./ThemeToggle"
 import ThemeConsumer from "./ThemeConsumer"
+import LocaleToggle from "./LocaleToggle"
+import LocaleConsumer from "./LocaleConsumer"
 import NoContextComponent from "./NoContextComponent"
 import "../app/globals.css"
 
@@ -17,13 +20,16 @@ const geistMono = Geist_Mono({
 
 const PageWrapper = ({ children }) => {
   const { theme } = useTheme()
+  const { locale } = useLocale()
 
   return (
-    <html lang="en" className={theme}>
+    <html lang={locale} className={theme}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="container">
           <ThemeToggle />
           <ThemeConsumer />
+          <LocaleToggle />
+          <LocaleConsumer />
           {/* EXPERIMENT: inline child — no useTheme, but parent (PageWrapper) is a subscriber */}
           <NoContextComponent label="PageWrapper" />
           {children}
