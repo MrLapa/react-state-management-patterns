@@ -1,8 +1,5 @@
 import Image from "next/image"
 
-import ThemeDisplayZustand from "../components/ThemeDisplayZustand"
-import ThemeToggleButtonZustand from "../components/ThemeToggleButtonZustand"
-
 import styles from "./page.module.css"
 
 export default function Home() {
@@ -69,13 +66,6 @@ export default function Home() {
           <p>
             Compare Context, Zustand, and Redux by solving the same problem.
           </p>
-        </div>
-        {/* Theme context and Zustand demo */}
-        <div style={{ marginTop: "2rem" }}>
-          <h2>React Context Demo</h2>
-          <h2>Zustand Demo</h2>
-          <ThemeDisplayZustand />
-          <ThemeToggleButtonZustand />
         </div>
       </main>
     </div>

@@ -4,10 +4,10 @@ import React from "react"
 
 import useThemeStore from "../store/themeStore"
 
-const ThemeDisplayZustand = () => {
+const ThemeDisplay = () => {
   const { theme } = useThemeStore()
-  console.log("ThemeDisplayZustand rendered")
+  console.log("ThemeDisplay rendered")
   return <div>Current theme: {theme}</div>
 }
 
-export default ThemeDisplayZustand
+export default ThemeDisplay

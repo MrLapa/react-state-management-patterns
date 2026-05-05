@@ -6,7 +6,7 @@ import React from "react"
 
 import useThemeStore from "../store/themeStore"
 import ThemeToggle from "../components/ThemeToggle"
-import ThemeConsumer from "../components/ThemeConsumer"
+import ThemeDisplay from "../components/ThemeDisplay"
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] })
 const geistMono = Geist_Mono({
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="container">
           <ThemeToggle />
-          <ThemeConsumer />
+          <ThemeDisplay />
           {children}
         </div>
       </body>
