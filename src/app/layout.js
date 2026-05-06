@@ -9,6 +9,8 @@ import { useSelector } from "react-redux"
 import store from "../store"
 import ThemeToggle from "../components/ThemeToggle"
 import ThemeDisplay from "../components/ThemeDisplay"
+import LocaleToggle from "../components/LocaleToggle"
+import LocaleDisplay from "../components/LocaleDisplay"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,14 +22,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-function ThemeLayout({ children }) {
+function AppLayout({ children }) {
   const theme = useSelector((state) => state.theme.theme)
+  const locale = useSelector((state) => state.locale.locale)
   return (
-    <html lang="en" className={theme}>
+    <html lang={locale} className={theme}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="container">
           <ThemeToggle />
           <ThemeDisplay />
+          <LocaleToggle />
+          <LocaleDisplay />
           {children}
         </div>
       </body>
@@ -38,7 +43,7 @@ function ThemeLayout({ children }) {
 export default function RootLayout({ children }) {
   return (
     <Provider store={store}>
-      <ThemeLayout>{children}</ThemeLayout>
+      <AppLayout>{children}</AppLayout>
     </Provider>
   )
 }
