@@ -1,8 +1,5 @@
 import Image from "next/image"
 
-import ThemeDisplayRedux from "../components/ThemeDisplayRedux"
-import ThemeToggleButtonRedux from "../components/ThemeToggleButtonRedux"
-
 import styles from "./page.module.css"
 
 export default function Home() {
@@ -69,12 +66,6 @@ export default function Home() {
           <p>
             Compare Context, Zustand, and Redux by solving the same problem.
           </p>
-        </div>
-        {/* Redux demo components */}
-        <div style={{ marginTop: "2rem" }}>
-          <h2>Redux Demo</h2>
-          <ThemeDisplayRedux />
-          <ThemeToggleButtonRedux />
         </div>
       </main>
     </div>

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux"
 
 import store from "../store"
 import ThemeToggle from "../components/ThemeToggle"
-import ThemeConsumer from "../components/ThemeConsumer"
+import ThemeDisplay from "../components/ThemeDisplay"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +27,7 @@ function ThemeLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <div className="container">
           <ThemeToggle />
-          <ThemeConsumer />
+          <ThemeDisplay />
           {children}
         </div>
       </body>
